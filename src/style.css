@@ -4,11 +4,16 @@
     --color-black: #000000;
     --color-background: #f6f6f6;
     --color-darkblue: #5D7694;
+    --burger-width: 2em;
+    --burger-distance: 0.5em;
+    --burger-thickness: 0.20em;
+    --burger-animation: 300ms;
 }
 
 * {
     margin: 0;
     padding: 0;
+    
 }
 /* 
 html,
@@ -78,55 +83,61 @@ header .link + .link, header .aside + .aside {
 }
 
 header .burger {
-    --burger-size: 4px;
-
+    width: var(--burger-width);
     position: relative;
     display: none;
-    width: calc(6 * var(--burger-size));
-    height: var(--burger-size);
-    background: var(--color-black);
+    height: calc((var(--burger-thickness) + var(--burger-distance)) * 1.5 + var(--burger-thickness));
     cursor: pointer;
+}
 
+header .burger .top,
+header .burger .mid,
+header .burger .bot {
+    height: var(--burger-thickness);
+    background: var(--color-black);
+    position: absolute;
+    width: var(--burger-width);
+    left: 0;
+    transition: all var(--burger-animation);
     border-radius: 3px;
-    transition: background .3s ease-in-out;
+}
 
+header .burger .top {
+    margin: 0;
+}
+
+header .burger .mid {
+    top: var(--burger-distance);
+    transform: all var(--burger-animation) / 2;
+}
+
+header .burger .bot {
+    top: calc(var(--burger-distance) * 2);
+}
+
+header .burger.isActive .mid {
+    opacity: 0;
+    width: 0;
+}
+
+header .burger.isActive .top,
+header .burger.isActive .bot {
+    margin-top: calc(var(--burger-width) / 3);
+}
+
+header .burger.isActive .top {
+    transform: rotate(45deg);
+}
+
+header .burger.isActive .bot {
+    transform: rotate(-45deg);
+    top: 0;
 }
 
 header .burger.isActive {
     background: transparent;
 }
 
-header .burger::before, header .burger::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: var(--burger-size);
-    left: 0;
-
-    background: var(--color-black);
-    border-radius: 3px;
-    transition: all .3s ease-in-out;
-
-
-}
-
-header .burger::before {
-    top: calc(-2 * var(--burger-size));
-}
-
-header .burger::after {
-    bottom: calc(-2 * var(--burger-size));
-}
-
-header .burger.isActive::before {
-    top: 0;
-    transform: rotate(45deg);
-}
-
-header .burger.isActive::after {
-    bottom: 0;
-    transform: rotate(-45deg);
-}
 
 /* BURGER */
 .burgerCtn {

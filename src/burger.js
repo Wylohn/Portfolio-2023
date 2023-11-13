@@ -1,6 +1,6 @@
 const burgerBtn = document.querySelector('#burgerBtn')
 const burgerSection = document.querySelector('.section.burger')
-const body = document.querySelector('body')
+const html = document.querySelector('html')
 let isBurgerOpen = false
 
 const handleBurgerTouch = () =>
@@ -9,12 +9,12 @@ const handleBurgerTouch = () =>
     {
         burgerSection.classList.add('isActive')
         burgerBtn.classList.add('isActive')
-        body.classList.add('blocked')
+        html.classList.add('blocked')
     } else
     {
         burgerSection.classList.remove('isActive')
         burgerBtn.classList.remove('isActive')
-        body.classList.remove('blocked')
+        html.classList.remove('blocked')
 
     }
     isBurgerOpen = !isBurgerOpen
