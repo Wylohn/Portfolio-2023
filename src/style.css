@@ -135,6 +135,7 @@ header .burger.isActive .bot {
 }
 
 header .burger.isActive {
+    margin-right: 17px;
     background: transparent;
 }
 
@@ -409,6 +410,7 @@ header .burger.isActive {
     height: 80px;
     top: 5%;
     left: 45%;
+    z-index: -1;
 
     background-image: url('../static/imgs/pattern1.svg');
     background-size: contain;
@@ -444,14 +446,18 @@ header .burger.isActive {
 .project .illustration {
     width: 585px;
     height: 444px;
-    
 }
+
 
 .project img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: left center
+}
+
+.project .illustration.center-image img {
+    object-position: center center
 }
 
 .project main {
