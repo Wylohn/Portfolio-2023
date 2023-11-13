@@ -57,11 +57,16 @@ table {
     --color-black: #000000;
     --color-background: #f6f6f6;
     --color-darkblue: #5D7694;
+    --burger-width: 2em;
+    --burger-distance: 0.5em;
+    --burger-thickness: 0.20em;
+    --burger-animation: 300ms;
 }
 
 * {
     margin: 0;
     padding: 0;
+    
 }
 /* 
 html,
@@ -131,55 +136,62 @@ header .link + .link, header .aside + .aside {
 }
 
 header .burger {
-    --burger-size: 4px;
-
+    width: var(--burger-width);
     position: relative;
     display: none;
-    width: calc(6 * var(--burger-size));
-    height: var(--burger-size);
-    background: var(--color-black);
+    height: calc((var(--burger-thickness) + var(--burger-distance)) * 1.5 + var(--burger-thickness));
     cursor: pointer;
-
-    border-radius: 3px;
-    transition: background .3s ease-in-out;
-
 }
 
-header .burger.isActive {
-    background: transparent;
-}
-
-header .burger::before, header .burger::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: var(--burger-size);
-    left: 0;
-
+header .burger .top,
+header .burger .mid,
+header .burger .bot {
+    height: var(--burger-thickness);
     background: var(--color-black);
+    position: absolute;
+    width: var(--burger-width);
+    left: 0;
+    transition: all var(--burger-animation);
     border-radius: 3px;
-    transition: all .3s ease-in-out;
-
-
 }
 
-header .burger::before {
-    top: calc(-2 * var(--burger-size));
+header .burger .top {
+    margin: 0;
 }
 
-header .burger::after {
-    bottom: calc(-2 * var(--burger-size));
+header .burger .mid {
+    top: var(--burger-distance);
+    transform: all var(--burger-animation) / 2;
 }
 
-header .burger.isActive::before {
-    top: 0;
+header .burger .bot {
+    top: calc(var(--burger-distance) * 2);
+}
+
+header .burger.isActive .mid {
+    opacity: 0;
+    width: 0;
+}
+
+header .burger.isActive .top,
+header .burger.isActive .bot {
+    margin-top: calc(var(--burger-width) / 3);
+}
+
+header .burger.isActive .top {
     transform: rotate(45deg);
 }
 
-header .burger.isActive::after {
-    bottom: 0;
+header .burger.isActive .bot {
     transform: rotate(-45deg);
+    top: 0;
 }
+
+header .burger.isActive {
+    margin-right: 17px;
+    background: transparent;
+}
+
 
 /* BURGER */
 .burgerCtn {
@@ -296,7 +308,7 @@ header .burger.isActive::after {
     height: 110px;
     top: 20%;
     left: 5%;
-    background-image: url(assets/images/2605c46931fc9962.svg);
+    background-image: url(assets/images/fcff3ecd6a8f14e7.svg);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -451,8 +463,9 @@ header .burger.isActive::after {
     height: 80px;
     top: 5%;
     left: 45%;
+    z-index: -1;
 
-    background-image: url(assets/images/2605c46931fc9962.svg);
+    background-image: url(assets/images/fcff3ecd6a8f14e7.svg);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -471,7 +484,7 @@ header .burger.isActive::after {
     top: 5%;
     left: 25%;
 
-    background-image: url(assets/images/262dbe86cdb662d0.svg);
+    background-image: url(assets/images/024d1960664042f9.svg);
     background-size: contain;
 }
 
@@ -486,17 +499,18 @@ header .burger.isActive::after {
 .project .illustration {
     width: 585px;
     height: 444px;
-    
 }
 
-.project #snake {
-    background-image: url(assets/images/76c3ba53385b5575.png);
-    background-size: cover;
+
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center
 }
 
-.project #paint {
-    background-image: url(assets/images/0616bc3edb96e020.png);
-    background-size: cover;
+.project .illustration.center-image img {
+    object-position: center center
 }
 
 .project main {
