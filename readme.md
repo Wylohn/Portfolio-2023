@@ -2,6 +2,7 @@
 
 ## Website
 
+This a an update from an old portfolio, i'm working on a better portfolio
 https://wylohn-portfolio.netlify.app
 
 ## Setup
