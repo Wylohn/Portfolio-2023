@@ -2,8 +2,8 @@
 
 ## Website
 
-This a an update from an old portfolio, i'm working on a better portfolio
-https://wylohn-portfolio.netlify.app
+This a an update from an old [portfolio](https://wylohn-portfolio.netlify.app), i'm working on a better portfolio
+
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
